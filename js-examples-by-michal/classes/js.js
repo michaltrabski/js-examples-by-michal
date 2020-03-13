@@ -1,26 +1,36 @@
-// console.log(this);
-function aa() {}
-this.aaa = "aaa";
-let aaaa = { aaaa: "aaaa" };
-
-let obj = {
-  name: "jan",
-  hello: function() {
-    console.log(this);
-    // say1();
-    function say1() {
-      console.log(this);
-    }
+"use strict";
+const obj = {
+  name: "test",
+  say: function() {
+    console.log("1 this = ", this);
+    (function innerF1() {
+      console.log("2 innerF1 this = ", this);
+    })();
+    (function innerF2() {
+      console.log("3 innerF2 this in use strict is undefined = ", this);
+    })();
+  },
+  arrow: () => {
+    console.log("4 arrow this = ", this);
   }
 };
-console.log(this.aaa);
-console.log(this);
-// obj.hello();
+if (1 === 2) {
+  const obj2 = obj;
+  const obj3 = { ...obj };
+  console.log("obj", obj);
+  console.log("obj2", obj2);
+  console.log("obj3", obj3);
 
-// let obj2 = {
-//   name: "jan",
-//   hello: () => {
-//     console.log("obj2", this);
-//   }
-// };
-// obj2.hello();
+  delete obj2.arrow;
+  console.log("obj", obj);
+  console.log("obj2", obj2);
+  console.log("obj3", obj3);
+}
+
+obj.say();
+obj.arrow();
+
+function x() {
+  console.log(this);
+}
+x();
