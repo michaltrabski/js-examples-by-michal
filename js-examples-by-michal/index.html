@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<head></head>
+<html>
+  <body>
+    <h1>Javascript examples!</h1>
+    <ul id="table-of-contents">
+      <!-- <li><a href="classes.html">this</a></li> -->
+    </ul>
+    <script>
+      const lessons = [
+        {
+          name: "classes",
+          url: "classes"
+        },
+        {
+          name: "this",
+          url: "this"
+        },
+        {
+          name: "promise",
+          url: "promise"
+        }
+      ];
+      let content = "";
+      lessons.forEach(({ name, url }) => {
+        content += `<li><a href="${url}/${url}.html">${name}</a></li>`;
+      });
+      document.getElementById("table-of-contents").innerHTML = content;
+    </script>
+  </body>
+  fore
+</html>
